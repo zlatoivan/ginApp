@@ -10,6 +10,7 @@ func main() {
 	// Создали маршрутизатор
 	router = gin.Default()
 
+
 	// Подгружаем шаблоны
 	router.LoadHTMLGlob("static/templates/*")
 
