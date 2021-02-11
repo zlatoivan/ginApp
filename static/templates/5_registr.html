@@ -1,0 +1,17 @@
+{{template "1_header.html" .}}
+
+<h3>Регистрация</h3>
+
+<form class="form col-sm-6" method="post" action="/user">
+    <p>Введите логин:  <input class="form-control" type="text" id="username" value="logg"></p>
+    <p>Введите пароль:  <input class="form-control" type="text" id="password" value="parr"></p>
+    <p>
+        <input class="btn btn-primary" type="submit" id="regBtn"
+               value="Зарегистрироваться">
+    </p>
+
+</form>
+
+<p class="hidden alert alert-danger col-sm-6" id="error"></p>
+
+{{template "3_footer.html" .}}

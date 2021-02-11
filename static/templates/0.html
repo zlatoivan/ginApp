@@ -1,0 +1,35 @@
+{{template "1_header.html" .}}
+
+
+
+{{template "3_footer.html" .}}
+
+
+<form method="POST" id="authInp">
+    <p>Введите логин:  <input type="text" id="username" value="logg"></p>
+    <p>Введите пароль:  <input type="text" id="password" value="parr"></p>
+</form>
+
+<form method="POST" id="authForm">
+    <p><input type="button" id="regBtn" value="Зарегистрироваться" onclick="clickRegistr()"></p>
+    <p><input type="button" id="authBtn" value="Авторизоваться" onclick="clickAuth()"></p>
+</form>
+
+<p>
+    <input type="button" id="chPassHref" value="Хочу изменить пароль" onclick="clickChangePassPage()"
+           class="hidden">
+</p>
+
+<p>
+    <input type="button" id="chPassBtn" value="Изменить пароль" onclick="clickChangePass()"
+           class="hidden">
+</p>
+
+<p>
+    <input type="button" id="logoutBtn" value="Выйти" onclick="clickLogout()" class="hidden">
+</p>
+
+<p>
+    <input type="button" onclick="clickUsers()" value="Вывести всех пользователей">
+</p>
+
