@@ -23,9 +23,3 @@ const deleteAccBtnClick = () => {
 
     location.replace(domain)
 }
-
-const showAll = () => {
-    fetch(domain + '/user', {
-        method: 'delete',
-    })
-}
