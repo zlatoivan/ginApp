@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{{template "1_header.html" .}}
 
-</body>
-</html>
+<h3>Изменить пароль</h3>
+
+<form class="form col-sm-6" method="post" action="/user/chPass">
+    <p>Введите старый пароль:  <input class="form-control" type="text" id="prevPass" name="prevPass" value="parr"></p>
+    <p>Введите новый пароль:  <input class="form-control" type="text" id="newPass" name="newPass" value="parol"></p>
+    <p>
+        <input class="btn btn-primary" type="submit"  id="chPassBtn"
+               value="Изменить пароль"> {{/*onclick="chPassBtnClick()" + button*/}}
+    </p>
+</form>
+
+{{if .Error}}
+    <p class="alert alert-danger col-sm-6" id="error">Неверный старый пароль</p>
+{{end}}
+
+{{template "3_footer.html" .}}

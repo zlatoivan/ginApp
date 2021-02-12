@@ -10,11 +10,9 @@ import (
 func authUser() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		token, err := c.Cookie("token")
+		fmt.Println("   * MW: ", token)
 		// Basic 9a75e347-3d31-11eb-829b-54bf6414a1a2
-		//fmt.Println("authUser() -> ", token)
-
-		/*a := string([]rune(token)[6:])
-		fmt.Println("a = ", a)*/
+		/*a := string([]rune(token)[6:])*/
 		if err != nil {
 			return
 		}
@@ -22,10 +20,11 @@ func authUser() gin.HandlerFunc {
 		if ok {
 			c.Set("author", username) // храниться в контексте (что-то не хранится пока дальше)
 			c.Set("isAuthIn", true)
-			fmt.Println(username, true)
+			fmt.Println("   *", username, true)
 		} else {
+			c.SetCookie("token", "no token", 10000, "", "", false, true) // Удаляем старые куки
 			c.Set("isAuthIn", false)
-			fmt.Println("Guest", false)
+			fmt.Println("   * Guest", false)
 		}
 	}
 }
@@ -33,9 +32,12 @@ func authUser() gin.HandlerFunc {
 // Требуем авторизацию при каждом следующем запросе
 func requireAuth() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		a, _ := c.Get("author")
-		fmt.Println("requireAuth() -> ", a)
-		if _, ok := c.Get("author"); !ok {
+		token, err := c.Cookie("token")
+		if err != nil {
+			c.Status(http.StatusForbidden)
+			return
+		}
+		if _, ok := tokens[token]; !ok {
 			c.AbortWithStatus(http.StatusUnauthorized) // а c.Status не прерывает, поэтому так лучше
 		}
 	}

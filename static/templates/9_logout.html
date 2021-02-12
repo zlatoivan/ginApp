@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{{template "1_header.html" .}}
 
-</body>
-</html>
+<h3>Выход</h3>
+
+<form class="form col-sm-6" method="post" action="/user/logout">
+    <p>
+        <input class="btn btn-primary" type="submit" id="logoutBtn"
+               value="Выйти">
+    </p>
+</form>
+
+{{template "3_footer.html" .}}

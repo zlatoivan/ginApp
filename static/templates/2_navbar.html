@@ -9,14 +9,13 @@
             <div class="navbar-nav">
                 {{if not .IsAuthIn}}
                     <a class="nav-link" href="/registr">Регистрация </a>
+                    <a class="nav-link" href="/auth">Войти</a>
                 {{end}}
-                {{if not .IsAuthIn}}
-                    {{/*<button type="button">hs</button>*/}}
+                {{if .IsAuthIn}}
+                    <a class="nav-link" href="/logout">Выйти</a>
+                    <a class="nav-link" href="/chPass">Изменить Пароль</a>
+                    <a class="nav-link" href="/deleteAcc">Удалить аккаунт</a>
                 {{end}}
-                <a class="nav-link" href="/auth">Войти</a>
-                <a class="nav-link" href="/">Выйти</a>
-                <a class="nav-link" href="/chPass">Изменить Пароль</a>
-                <a class="nav-link" href="#" onclick="clickUsers()">Вывести Всех</a>
                 <a class="nav-link" href="" id="author">{{ .Author }}</a>
             </div>
         </div>
